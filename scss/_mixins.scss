@@ -1,0 +1,118 @@
+$bodycolor: #4E4D53;
+$titlecolor: #222222;
+$orange: #F47821;
+
+$roboto: 'Roboto', sans-serif;
+$gilroy: 'Conv_Girloy', sans-serif;
+
+// input placeholders
+@mixin optional-at-root($sel) {
+  @at-root #{if(not &, $sel, selector-append(&, $sel))} {
+    @content;
+  }
+}
+@mixin placeholder {
+  @include optional-at-root('::-webkit-input-placeholder') {
+    @content;
+  }
+  @include optional-at-root(':-moz-placeholder') {
+    @content;
+  }
+  @include optional-at-root('::-moz-placeholder') {
+    @content;
+  }
+  @include optional-at-root(':-ms-input-placeholder') {
+    @content;
+  }
+}
+// input placeholders end
+
+// transition
+@mixin transition1 {
+  transition: all .5s ease-out;
+}
+// transition slider
+@mixin transition2 {
+  transition: all 1s linear;
+}
+
+// input-hidden
+@mixin inputHide {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+//  outline
+@mixin outline{
+  box-shadow: 0 0 1px 1px $orange !important;
+}
+
+@mixin posCenter{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+////////////////////////////////////////////////  media
+@mixin dev4 {
+   @media screen and (max-width: 1440px) {@content;}
+}
+@mixin dev3 {
+   @media screen and (max-width: 959.5px) {@content;}
+}
+@mixin dev2 {
+   @media screen and (max-width: 767.5px) {@content;}
+}
+@mixin dev1 {
+   @media screen and (max-width: 479.5px) {@content;}
+}
+
+//  это - чтобы плагин все правильно соединял
+@mixin mediamax {
+  @include dev4{
+    p{
+      color: inherit;
+    }
+  }
+  @include dev3{
+    p{
+      color: inherit;
+    }
+  }
+  @include dev2{
+    p{
+      color: inherit;
+    }
+  }
+  @include dev1{
+    p{
+      color: inherit;
+    }
+  }
+}
+////////////////////////////////////////////////  media end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

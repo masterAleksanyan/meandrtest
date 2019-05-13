@@ -1,0 +1,440 @@
+@import '_mixins.scss';
+
+
+/*  fonts  */
+@font-face {
+  font-family: 'DIN Pro';
+  src: url('build/fonts/DINPro-Bold.eot');
+  src: local('DIN Pro Bold'), local('DINPro-Bold'),
+      url('build/fonts/DINPro-Bold.eot?#iefix') format('embedded-opentype'),
+      url('build/fonts/DINPro-Bold.woff') format('woff'),
+      url('build/fonts/DINPro-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'DIN Pro';
+  src: url('build/fonts/DINPro.eot');
+  src: local('DIN Pro'), local('DINPro'),
+      url('build/fonts/DINPro.eot?#iefix') format('embedded-opentype'),
+      url('build/fonts/DINPro.woff') format('woff'),
+      url('build/fonts/DINPro.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Conv_Girloy';
+  src: url(build/fonts/10871.eot);
+  src:local("☺"),url(build/fonts/10871.woff) format("woff"),
+    url(build/fonts/10871.ttf) format("truetype"),
+    url(build/fonts/10871.svg) format("svg");
+  font-weight:400;
+  font-style:normal;
+}
+
+/*--------  reset  ----------*/
+*, *::after, *::before{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+@include placeholder{
+  color: inherit;
+  font: inherit;
+}
+a{
+  color: inherit;
+  text-decoration: none;
+}
+ul{
+  list-style: none;
+}
+h1, h2, h3, h4, h5, h6{
+  line-height: 1;
+  font-weight: 400;
+}
+img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+button{
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: inherit;
+}
+button, input, select, a, textarea{
+  outline: none;
+  &.focuselem{
+    @include outline;
+  }
+}
+
+.anim-element > *{
+  transition: all 1.2s ease;
+  opacity: 0;
+  transform: translateY(30px);
+}
+.anim-element > .animate{
+  transition: all 1.2s ease;
+  opacity: 1;
+  transform: translateY(0px);
+}
+
+@include mediamax;
+
+
+/*--------  global styles  ----------*/
+html{
+  font-size: 10px;
+  @include dev3{
+    font-size: 7px;
+  }
+  @include dev2{
+    font-size: 5px;
+  }
+}
+
+body{
+  font-family: 'DIN Pro';
+  font-weight: 400;
+  font-size: 16px;
+  background-color: #fff;
+  color: $bodycolor;
+  line-height: 1.5;
+}
+
+.h1{
+  font-size: 3em;
+  color: $titlecolor;
+  @include dev2{
+    font-size: 2em;
+  }
+}
+h2{
+  font-size: 2.5em;
+  @include dev2{
+    font-size: 1.5em;
+  }
+}
+h3{
+  font-size: 20px;
+  font-weight: bold;
+}
+h4{
+  
+}
+h5{
+  
+}
+
+
+
+/*--------  style page  ----------*/
+
+.header{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 50vh;
+  min-height: 300px;
+  padding: 10px;
+  &__text{
+    margin: 24px 0 30px;
+    font-family: $roboto;
+    span{
+      color: $orange;
+    }
+  }
+}
+
+/*  button complate  */
+.complate-btn{
+  position: relative;
+  display: flex;
+  align-items: center;
+  border-radius: 27px;
+  &::before{
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 54px;
+    background-color: rgba(135, 135, 135, .05);
+    border-radius: 27px;
+    transition: .5s ease-in;
+  }
+  &:hover::before{
+    width: 100%;
+    transition: .5s ease-in;
+  }
+  &:hover &__icon{
+    transform: rotate(360deg);
+    transition: .5s ease-in;
+  }
+  &__icon{
+    position: relative;
+    width: 54px;
+    height: 54px;
+    display: inline-block;
+    color: $orange;
+    border-radius: 50%;
+    transition: .5s ease-in;
+    &::after,
+    &::before{
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      display: inline-block;
+      width: 1em;
+      height: 0.15em;
+      background-color: $orange;
+    }
+    &::after{
+      transform: translate(-50%, -50%) rotate(90deg);
+    }
+  }
+  &__text{
+    position: relative;
+    left: -8px;
+    font-family: $gilroy;
+    text-transform: uppercase;
+    padding-right: 22px;
+    letter-spacing: .02em;
+  }
+}
+
+
+
+/*  about  */
+.about-container {
+  padding-bottom: 8rem;
+  background-color: #F7F5FA;
+}
+.about-img{
+  width: 100%;
+  height: 60vh;
+  min-height: 300px;
+}
+.about{
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  width: 70%;
+  margin: -8rem auto 0;
+  background-color: #fff;
+  @include dev4{
+    width: 80%;
+  }
+  @include dev3{
+    width: 90%;
+  }
+  @include dev2{
+    width: 100%;
+  }
+  &__item{
+    padding: 5rem 6rem;
+    width: 50%;
+    border: 1px solid #EDEDED;
+    @include dev2{
+      width: 100%;
+    }
+  }
+  &__title{
+    font-size: .75em;
+    color: $orange;
+    margin-bottom: 1em;
+  }
+  &__text{
+    font-size: 1.5em;
+    letter-spacing: -0.03em;
+  }
+}
+
+
+
+
+/*  similar  */
+.similar{
+  padding: 8rem 10px 10rem;
+  &__container{
+    width: 60%;
+    margin: 0 auto;
+    @include dev3{
+      width: 80%;
+    }
+    @include dev2{
+      width: 100%;
+    }
+  }
+  &__text{
+    margin-top: 1.5em;
+  }
+}
+
+
+/*  workus  */
+.workus{
+  background-color: #F7F5FA;
+  padding: 12rem 15px 16rem;
+  &__container{
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    @include dev4{
+      max-width: 1140px;
+    }
+  }
+  &-block{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    &__item{
+      padding-right: 5rem;
+      width: 33%;
+      @include dev3{
+        width: 50%;
+        margin-bottom: 30px;
+      }
+      @include dev2{
+        width: 80%;
+        margin-right: auto;
+        margin-left: auto;
+      }
+      @include dev1{
+        width: 100%;
+      }
+    }
+    &__icon{
+      margin-bottom: 3rem;
+      width: 52px;
+      height: 52px;
+    }
+    &__title{
+      p{
+        width: 24px;
+        height: 2px;
+        margin: 2.4rem 0 2.7rem;
+        background-color: $orange;
+      }
+    }
+    &__text{
+      font-family: $roboto;
+    }
+  }
+}
+
+.title_{
+  margin-bottom: 6rem;
+  text-align: center;
+  color: #000;
+}
+
+
+/*  about your  */
+.about-your{
+  padding: 10rem 15px 12rem;
+  background-color: #161616;
+  color: #fff;
+  .title_{
+    color: inherit;
+  }
+  &__container{
+    width: 45%;
+    margin: 0 auto;
+    @include dev4{
+      width: 60%;
+    }
+    @include dev3{
+      width: 80%;
+    }
+    @include dev2{
+      width: 100%;
+    }
+  }
+}
+
+.form-list{
+  counter-reset: my-awesome-counter;
+  &__item{
+    position: relative;
+    counter-increment: my-awesome-counter;
+    letter-spacing: -0.01em;
+    margin-bottom: 4.8rem;
+    &::before{
+      content: counter(my-awesome-counter);
+      width: 64px;
+      height: 64px;
+      position: absolute;
+      top: .9em;
+      left: -28px;
+      transform: translate(-100%, -50%);
+      border: 1px solid rgba(255,255,255,.23);
+      border-radius: 50%;
+      color: $orange;
+      text-align: center;
+      line-height: 60px;
+      @include dev3{
+        content: none;
+      }
+    }
+  }
+  &__text{
+    margin-bottom: .5em;
+  }
+  &__inp{
+    width: 100%;
+    color: rgba(255,255,255,.3);
+    background: transparent;
+    font-size: 1.5em;
+    padding: .3em 0;
+    font-family: $roboto;
+    border: none;
+    border-bottom: 1px solid rgba(247, 248, 250, .1);
+    @include dev2{
+      font-size: 1em;
+    }
+  }
+  &__submit{
+    width: 100%;
+    height: 54px;
+    background-color: #fff;
+    border-radius: 27px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.12);
+    border: none;
+    font-size: .875em;
+    color: $orange;
+    text-transform: uppercase;
+    font-family: $gilroy;
+    cursor: pointer;
+    transition: .3s;
+    &:hover{
+      opacity: .8;
+      transition: .3s;
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
