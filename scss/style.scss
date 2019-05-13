@@ -400,6 +400,10 @@ h5{
     @include dev2{
       font-size: 1em;
     }
+    &.error{
+      box-shadow: 0 2px 0 0 red;
+      transition: .3s;
+    }
   }
   &__submit{
     width: 100%;

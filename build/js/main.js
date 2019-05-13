@@ -45,6 +45,41 @@ window.onload = function(){
       }
     }
   }
+  ///  anim
+  
+  ///  verification
+  var nameReg = /^[a-zA-Zа-яёА-ЯЁ ]+(([',. -][a-zA-Zа-яёА-ЯЁ ])?[a-zA-Zа-яёА-ЯЁ]*)*$/g;
+  var mailReg = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  var phoneReg = /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/g
+  
+  var aboutForm = document.getElementById('about-form');
+  var inputName = document.getElementById('input-name');
+  var inputMail = document.getElementById('input-mail');
+  var inputPhone = document.getElementById('input-phone');
+  
+  aboutForm.addEventListener('submit', function(ev){
+    var n = regInput(inputName, nameReg);
+    var m = regInput(inputMail, mailReg);
+    var p = regInput(inputPhone, phoneReg);
+    
+    if(n && m && p){
+      return true;
+    } else {
+      ev.preventDefault();
+    }
+  });
+  
+  function regInput(elem, reg){
+    if(elem.value.trim().match(reg)){
+      return true;
+    } else {
+      elem.classList.add('error');
+      elem.addEventListener('input', function(){
+        this.classList.remove('error');
+      });
+      return false;
+    }
+  }
   
   
 };
